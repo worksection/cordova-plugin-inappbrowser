@@ -932,7 +932,7 @@ static CDVUIInAppBrowser* instance = nil;
 }
 
 - (BOOL)prefersStatusBarHidden {
-    return YES;
+    return NO;
 }
 
 - (void)close
