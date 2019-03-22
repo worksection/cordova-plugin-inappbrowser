@@ -66,6 +66,12 @@
         hide: function (eventname) {
             exec(null, null, 'InAppBrowser', 'hide', []);
         },
+        disableScrolling: function (eventname) {
+            exec(null, null, 'InAppBrowser', 'disableScrolling', []);
+        },
+        enableScrolling: function (eventname) {
+            exec(null, null, 'InAppBrowser', 'enableScrolling', []);
+        },
         addEventListener: function (eventname, f) {
             if (eventname in this.channels) {
                 this.channels[eventname].subscribe(f);

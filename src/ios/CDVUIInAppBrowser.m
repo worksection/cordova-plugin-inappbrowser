@@ -296,6 +296,16 @@ static CDVUIInAppBrowser* instance = nil;
     });
 }
 
+- (void)disableScrolling:(CDVInvokedUrlCommand*)command
+{
+    self.inAppBrowserViewController.webView.scrollView.scrollEnabled = NO;
+}
+
+- (void)enableScrolling:(CDVInvokedUrlCommand*)command
+{
+    self.inAppBrowserViewController.webView.scrollView.scrollEnabled = YES;
+}
+
 - (void)openInCordovaWebView:(NSURL*)url withOptions:(NSString*)options
 {
     NSURLRequest* request = [NSURLRequest requestWithURL:url];

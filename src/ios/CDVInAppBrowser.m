@@ -84,6 +84,24 @@
     }
 }
 
+- (void)disableScrolling:(CDVInvokedUrlCommand*)command
+{
+    if(self.usewkwebview){
+        [[CDVWKInAppBrowser getInstance] disableScrolling:command];
+    }else{
+        [[CDVUIInAppBrowser getInstance] disableScrolling:command];
+    }
+}
+
+- (void)enableScrolling:(CDVInvokedUrlCommand*)command
+{
+    if(self.usewkwebview){
+        [[CDVWKInAppBrowser getInstance] enableScrolling:command];
+    }else{
+        [[CDVUIInAppBrowser getInstance] enableScrolling:command];
+    }
+}
+
 
 - (void)injectScriptCode:(CDVInvokedUrlCommand*)command
 {

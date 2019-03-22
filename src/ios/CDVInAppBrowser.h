@@ -30,6 +30,8 @@
 - (void)injectScriptCode:(CDVInvokedUrlCommand*)command;
 - (void)show:(CDVInvokedUrlCommand*)command;
 - (void)hide:(CDVInvokedUrlCommand*)command;
+- (void)disableScrolling:(CDVInvokedUrlCommand*)command;
+- (void)enableScrolling:(CDVInvokedUrlCommand*)command;
 - (void)loadAfterBeforeload:(CDVInvokedUrlCommand*)command;
 
 @end
