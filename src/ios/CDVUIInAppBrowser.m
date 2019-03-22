@@ -94,7 +94,6 @@ static CDVUIInAppBrowser* instance = nil;
     NSString* target = [command argumentAtIndex:1 withDefault:kInAppBrowserTargetSelf];
     NSString* options = [command argumentAtIndex:2 withDefault:@"" andClass:[NSString class]];
 
-    self.callbackId = command.callbackId;
 
     if (url != nil) {
 #ifdef __CORDOVA_4_0_0
@@ -113,6 +112,7 @@ static CDVUIInAppBrowser* instance = nil;
         } else if ([target isEqualToString:kInAppBrowserTargetSystem]) {
             [self openInSystem:absoluteUrl];
         } else { // _blank or anything else
+            self.callbackId = command.callbackId;
             [self openInInAppBrowser:absoluteUrl withOptions:options];
         }
 
