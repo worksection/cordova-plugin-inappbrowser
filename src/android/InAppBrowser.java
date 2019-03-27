@@ -788,11 +788,12 @@ public class InAppBrowser extends CordovaPlugin {
                 dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
                 dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    int uiOptions = dialog.getWindow().getDecorView().getSystemUiVisibility()
+                    int uiOptions = cordova.getActivity().getWindow().getSystemUiVisibility()
                             | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                             | View.SYSTEM_UI_FLAG_FULLSCREEN;
 
-                    dialog.getWindow().getDecorView().setSystemUiVisibility(uiOptions);
+                    cordova.getActivity().getWindow().getDecorView().setSystemUiVisibility(uiOptions);
+                    cordova.getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
                 }
                 dialog.setCancelable(true);
                 dialog.setInAppBroswer(getInAppBrowser());
