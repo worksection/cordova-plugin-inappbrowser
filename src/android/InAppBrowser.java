@@ -788,7 +788,7 @@ public class InAppBrowser extends CordovaPlugin {
                 dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
                 dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    int uiOptions = cordova.getActivity().getWindow().getSystemUiVisibility()
+                    int uiOptions = cordova.getActivity().getWindow().getDecorView().getSystemUiVisibility()
                             | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                             | View.SYSTEM_UI_FLAG_FULLSCREEN;
 
