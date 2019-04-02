@@ -559,7 +559,7 @@ public class InAppBrowser extends CordovaPlugin {
         try {
             JSONObject obj = new JSONObject();
             obj.put("type", BACK_EVENT);
-            sendUpdate(obj, false);
+            sendUpdate(obj, true);
         } catch (JSONException ex) {
             LOG.d(LOG_TAG, "Back event not fired");
         }
