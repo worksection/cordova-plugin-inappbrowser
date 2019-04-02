@@ -46,8 +46,10 @@ public class InAppBrowserDialog extends Dialog {
             this.dismiss();
         } else {
             // better to go through the in inAppBrowser
-            // because it does a clean up
-            if (this.inAppBrowser.hardwareBack() && this.inAppBrowser.canGoBack()) {
+            // because it does a clean up            
+            if (this.inAppBrowser.sendBack()) {
+                this.inAppBrowser.goSendBack();
+            }  else if (this.inAppBrowser.hardwareBack() && this.inAppBrowser.canGoBack()) {
                 this.inAppBrowser.goBack();
             }  else {
                 this.inAppBrowser.closeDialog();

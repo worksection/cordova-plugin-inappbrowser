@@ -93,6 +93,7 @@ public class InAppBrowser extends CordovaPlugin {
     private static final String SELF = "_self";
     private static final String SYSTEM = "_system";
     private static final String EXIT_EVENT = "exit";
+    private static final String BACK_EVENT = "back";
     private static final String LOCATION = "location";
     private static final String ZOOM = "zoom";
     private static final String HIDDEN = "hidden";
@@ -103,6 +104,7 @@ public class InAppBrowser extends CordovaPlugin {
     private static final String CLEAR_ALL_CACHE = "clearcache";
     private static final String CLEAR_SESSION_CACHE = "clearsessioncache";
     private static final String HARDWARE_BACK_BUTTON = "hardwareback";
+    private static final String SENDBACK_BUTTON = "sendback";
     private static final String MEDIA_PLAYBACK_REQUIRES_USER_ACTION = "mediaPlaybackRequiresUserAction";
     private static final String SHOULD_PAUSE = "shouldPauseOnSuspend";
     private static final Boolean DEFAULT_HARDWARE_BACK = true;
@@ -129,7 +131,8 @@ public class InAppBrowser extends CordovaPlugin {
     private boolean openWindowHidden = false;
     private boolean clearAllCache = false;
     private boolean clearSessionCache = false;
-    private boolean hadwareBackButton = true;
+    private boolean hardwareBackButton = true;
+    private boolean sendBackButton = false;
     private boolean mediaPlaybackRequiresUserGesture = false;
     private boolean shouldPauseInAppBrowser = false;
     private boolean useWideViewPort = true;
@@ -552,6 +555,19 @@ public class InAppBrowser extends CordovaPlugin {
     /**
      * Checks to see if it is possible to go back one page in history, then does so.
      */
+    public void goSendBack() {
+        try {
+            JSONObject obj = new JSONObject();
+            obj.put("type", BACK_EVENT);
+            sendUpdate(obj, false);
+        } catch (JSONException ex) {
+            LOG.d(LOG_TAG, "Back event not fired");
+        }
+    }
+
+    /**
+     * Checks to see if it is possible to go back one page in history, then does so.
+     */
     public void goBack() {
         if (this.inAppWebView.canGoBack()) {
             this.inAppWebView.goBack();
@@ -571,7 +587,15 @@ public class InAppBrowser extends CordovaPlugin {
      * @return boolean
      */
     public boolean hardwareBack() {
-        return hadwareBackButton;
+        return hardwareBackButton;
+    }
+
+    /**
+     * Has the user set the hardware back button to go back
+     * @return boolean
+     */
+    public boolean sendBack() {
+        return sendBackButton;
     }
 
     /**
@@ -648,9 +672,15 @@ public class InAppBrowser extends CordovaPlugin {
             }
             String hardwareBack = features.get(HARDWARE_BACK_BUTTON);
             if (hardwareBack != null) {
-                hadwareBackButton = hardwareBack.equals("yes") ? true : false;
+                hardwareBackButton = hardwareBack.equals("yes") ? true : false;
             } else {
-                hadwareBackButton = DEFAULT_HARDWARE_BACK;
+                hardwareBackButton = DEFAULT_HARDWARE_BACK;
+            }
+            String sendBack = features.get(SENDBACK_BUTTON);
+            if (sendBack != null) {
+                sendBackButton = sendBack.equals("yes") ? true : false;
+            } else {
+                sendBackButton = false;
             }
             String mediaPlayback = features.get(MEDIA_PLAYBACK_REQUIRES_USER_ACTION);
             if (mediaPlayback != null) {
