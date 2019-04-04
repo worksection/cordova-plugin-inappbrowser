@@ -815,6 +815,19 @@ public class InAppBrowser extends CordovaPlugin {
                 dialog.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                    
+        try {
+            Method getSettings = dialog.getWindow().getClass().getMethod("getSettings");
+            Object wSettings = getSettings.invoke(dialog.getWindow());
+            Method setTextZoom = wSettings.getClass().getMethod("setTextZoom", Integer.TYPE);
+            setTextZoom.invoke(wSettings, 100);
+        } catch (ClassCastException ce) {
+        } catch (NoSuchMethodException e) {
+        } catch (InvocationTargetException e) {
+        } catch (IllegalAccessException e) {
+        }
+                   
+                   
+                   
                 dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
                 dialog.setCancelable(true);
                 dialog.setInAppBroswer(getInAppBrowser());
