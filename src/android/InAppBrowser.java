@@ -995,18 +995,6 @@ public class InAppBrowser extends CordovaPlugin {
                     }
 
                 });
-                
-                try {
-                    Method getSettings = dialog.getWindow().getClass().getMethod("getSettings");
-                    Object wSettings = getSettings.invoke(dialog.getWindow());
-                    Method setTextZoom = wSettings.getClass().getMethod("setTextZoom", Integer.TYPE);
-                    setTextZoom.invoke(wSettings, 100);
-                } catch (ClassCastException ce) {
-                } catch (NoSuchMethodException e) {
-                } catch (InvocationTargetException e) {
-                } catch (IllegalAccessException e) {
-                }
-
 
                 WebViewClient client = new InAppBrowserClient(thatWebView, edittext, beforeload);
                 inAppWebView.setWebViewClient(client);
@@ -1015,6 +1003,7 @@ public class InAppBrowser extends CordovaPlugin {
                 settings.setJavaScriptCanOpenWindowsAutomatically(true);
                 settings.setBuiltInZoomControls(showZoomControls);
                 settings.setPluginState(android.webkit.WebSettings.PluginState.ON);
+                settings.setTextZoom(100);
 
                 // Add postMessage interface
                 class JsObject {
