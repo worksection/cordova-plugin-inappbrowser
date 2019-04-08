@@ -829,7 +829,7 @@ public class InAppBrowser extends CordovaPlugin {
                 dialog.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                    
-                dialog.getWindow().setAttributes(lp_copy);
+                //dialog.getWindow().setAttributes(lp_copy);
                 dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
                 dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                 if (darkTheme) {
