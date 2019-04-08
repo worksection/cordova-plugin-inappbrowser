@@ -822,7 +822,7 @@ public class InAppBrowser extends CordovaPlugin {
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                    
                 dialog.getWindow().setAttributes(lp_copy);
-                dialog.getWindow().clearFlags(WindowManager.LayoutParams.WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
                 dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                 dialog.getWindow().setStatusBarColor(Color.parseColor("#FFFFFF"));
 
