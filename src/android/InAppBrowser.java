@@ -824,12 +824,12 @@ public class InAppBrowser extends CordovaPlugin {
                 dialog.getWindow().setAttributes(lp_copy);
                 //dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
-                dialog.getWindow().setStatusBarColor(Color.parseColor("#fff"));
+                dialog.getWindow().setStatusBarColor(Color.parseColor("#FFFFFF"));
 
-                try {
-                    View decorView = cordova.getActivity().getWindow().getDecorView();
-                    decorView.setSystemUiVisibility(decorView.getSystemUiVisibility() | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-                } catch(Exception e) {}
+                // try {
+                //     View decorView = cordova.getActivity().getWindow().getDecorView();
+                //     decorView.setSystemUiVisibility(decorView.getSystemUiVisibility() | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+                // } catch(Exception e) {}
 
                 //dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN, WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
                 //dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
