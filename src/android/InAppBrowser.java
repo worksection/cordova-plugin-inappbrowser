@@ -813,15 +813,15 @@ public class InAppBrowser extends CordovaPlugin {
                     dialog.dismiss();
                 };
 
-                WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-                lp.copyFrom(cordova.getActivity().getWindow().getAttributes());
+                WindowManager.LayoutParams lp_copy = new WindowManager.LayoutParams();
+                lp_copy.copyFrom(cordova.getActivity().getWindow().getAttributes());
 
                 // Let's create the main dialog
                 dialog = new InAppBrowserDialog(cordova.getActivity(), android.R.style.Theme_NoTitleBar);
                 dialog.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                    
-                dialog.getWindow().setAttributes(lp);
+                dialog.getWindow().setAttributes(lp_copy);
                 //dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                 dialog.getWindow().setStatusBarColor(Color.parseColor("#FFFFFF"));
 
