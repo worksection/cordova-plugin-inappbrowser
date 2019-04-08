@@ -105,6 +105,7 @@ public class InAppBrowser extends CordovaPlugin {
     private static final String CLEAR_SESSION_CACHE = "clearsessioncache";
     private static final String HARDWARE_BACK_BUTTON = "hardwareback";
     private static final String SENDBACK_BUTTON = "sendback";
+    private static final String DARK_THEME = "dark";
     private static final String MEDIA_PLAYBACK_REQUIRES_USER_ACTION = "mediaPlaybackRequiresUserAction";
     private static final String SHOULD_PAUSE = "shouldPauseOnSuspend";
     private static final Boolean DEFAULT_HARDWARE_BACK = true;
@@ -133,6 +134,7 @@ public class InAppBrowser extends CordovaPlugin {
     private boolean clearSessionCache = false;
     private boolean hardwareBackButton = true;
     private boolean sendBackButton = false;
+    private boolean darkTheme = false;
     private boolean mediaPlaybackRequiresUserGesture = false;
     private boolean shouldPauseInAppBrowser = false;
     private boolean useWideViewPort = true;
@@ -685,6 +687,12 @@ public class InAppBrowser extends CordovaPlugin {
             } else {
                 sendBackButton = false;
             }
+            String darkTheme_ = features.get(DARK_THEME);
+            if (darkTheme_ != null) {
+                darkTheme = darkTheme_.equals("yes") ? true : false;
+            } else {
+                darkTheme = false;
+            }
             String mediaPlayback = features.get(MEDIA_PLAYBACK_REQUIRES_USER_ACTION);
             if (mediaPlayback != null) {
                 mediaPlaybackRequiresUserGesture = mediaPlayback.equals("yes") ? true : false;
@@ -822,9 +830,13 @@ public class InAppBrowser extends CordovaPlugin {
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                    
                 dialog.getWindow().setAttributes(lp_copy);
-                // dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                // dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                // dialog.getWindow().setStatusBarColor(Color.parseColor("#FFFFFF"));
+                dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                if (darkTheme) {
+                  dialog.getWindow().setStatusBarColor(Color.parseColor("#2B333B"));
+                } else {
+                  dialog.getWindow().setStatusBarColor(Color.parseColor("#FFFFFF"));
+                }
 
                 dialog.getWindow().getDecorView().setSystemUiVisibility(cordova.getActivity().getWindow().getDecorView().getSystemUiVisibility());
 
