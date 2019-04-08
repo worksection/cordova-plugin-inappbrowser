@@ -825,7 +825,7 @@ public class InAppBrowser extends CordovaPlugin {
                 //dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                 dialog.getWindow().setStatusBarColor(Color.parseColor("#fff"));
 
-                View decorView = dialog.getWindow().getDecorView();
+                View decorView = cordova.getActivity().getDecorView();
                 int uiOptions = decorView.getSystemUiVisibility();
                 decorView.setSystemUiVisibility(uiOptions | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
