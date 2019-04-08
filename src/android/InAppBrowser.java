@@ -821,7 +821,7 @@ public class InAppBrowser extends CordovaPlugin {
                 dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN, WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
                 
                 dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                dialog.getWindow().setStatusBarColor(Color.White);
+                dialog.getWindow().setStatusBarColor(Color.parseColor("#FFFFFF"));
 
 
                 //dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
