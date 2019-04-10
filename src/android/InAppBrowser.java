@@ -825,18 +825,18 @@ public class InAppBrowser extends CordovaPlugin {
                 lp_copy.copyFrom(cordova.getActivity().getWindow().getAttributes());
 
                 // Let's create the main dialog
-                dialog = new InAppBrowserDialog(cordova.getActivity(), android.R.style.Theme_Translucent_NoTitleBar);
+                dialog = new InAppBrowserDialog(cordova.getActivity(), android.R.style.Theme_NoTitleBar);
                 dialog.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                    
                 //dialog.getWindow().setAttributes(lp_copy);
-                // dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                // dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                // if (darkTheme) {
-                //   dialog.getWindow().setStatusBarColor(Color.parseColor("#2B333B"));
-                // } else {
-                //   dialog.getWindow().setStatusBarColor(Color.parseColor("#FFFFFF"));
-                // }
+                dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                if (darkTheme) {
+                  dialog.getWindow().setStatusBarColor(Color.parseColor("#2B333B"));
+                } else {
+                  dialog.getWindow().setStatusBarColor(Color.parseColor("#FFFFFF"));
+                }
 
                 dialog.getWindow().getDecorView().setSystemUiVisibility(cordova.getActivity().getWindow().getDecorView().getSystemUiVisibility());
 
